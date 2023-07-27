@@ -1,15 +1,16 @@
 <div class="w-full py-1 flex flex-row">
-    <div (click)="exportToCSV()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export csv </div>
-    <div (click)="exportLog()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export log file </div>
+    <button (click)="exportToCSV()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export csv </button>
+    <button (click)="exportLog()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export log file </button>
 </div>
 <div class="flex h-[15%] flex-row max-md:text-xs w-full p-2  shadow text-center ">
-    <div (click)="sortSlNo()" class="w-[10%] m-1 p-1">Sl No.</div>
-    <div (click)="sortTitle()" class="w-[30%] m-1 p-1">Title</div>
-    <div (click)="sortPriority()" class="w-[20%] m-1 p-1">Priority</div>
-    <div (click)="sortStatus()"  class="w-[20%] m-1 p-1">Status</div>
-    <div (click)="sortDueDate()" class="w-[20%] m-1 p-1">Due Date</div>
-    <div class="w-[10%] m-1 p-1"> <img src="../../../assets/sort.png" class="w-[4vh] m-auto" alt="Sort" srcset=""> </div>
+    <button (click)="sortSlNo()" class="w-[10%] max-md:w-[15%] max-md:flex max-md:flex-col border-r-2 m-1 p-1">  Sl No. <span class="float-right  text-white aspect-square w-8 max-md:w-4 max-md:h-fit bg-blue-500 rounded ">{{order[0]?'↓':'↑'}}</span>  </button>
+    <button (click)="sortTitle()" class="w-[23%] max-md:flex max-md:flex-col border-r-2 m-1  p-1">Title  <span class="float-right text-white aspect-square w-8 bg-blue-500 max-md:w-4 max-md:h-fit rounded ">{{order[1]?'↓':'↑'}}</span></button>
+    <button (click)="sortPriority()" class="w-[20%] max-md:flex max-md:flex-col border-r-2 m-1 p-1">Priority  <span class="float-right text-white aspect-square w-8 max-md:w-4 max-md:h-fit bg-blue-500 rounded ">{{order[2]?'↓':'↑'}}</span> </button>
+    <button (click)="sortStatus()"  class="w-[20%] max-md:flex max-md:flex-col border-r-2 m-1 p-1">Status  <span class="float-right text-white aspect-square w-8 max-md:w-4 max-md:h-fit bg-blue-500 rounded ">{{order[4]?'↓':'↑'}}</span></button>
+    <button (click)="sortDueDate()" class="w-[20%] max-md:flex max-md:flex-col border-r-2 m-1 p-1">Due Date<span class="float-right text-white aspect-square w-8 max-md:w-4 max-md:h-fit bg-blue-500 rounded ">{{order[3]?'↓':'↑'}}</span> </button>
+    <div  class="w-[10%] max-md:hidden m-1 p-1"> <img src="../../../assets/sort.png" class="w-[4vh] m-auto" alt="Sort" > </div>
 </div>
+
 
 <ul *ngFor="let task of tasks">
     <li>

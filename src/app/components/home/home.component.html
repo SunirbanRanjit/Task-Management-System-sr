@@ -1,12 +1,12 @@
 <div class="w-full">
-    <h2 class=" flex flex-row text-center bg-blue-500  text-white max-md:text-base text-2xl"> <button class=" text-blue-500  m-2 text-sm px-2"> X </button> <div class="items-center grow ">Task Management System</div> 
+    <h2 class=" flex py-2 flex-row text-center bg-blue-500 font-bold text-white max-md:text-base text-2xl"> <button class=" text-blue-500  m-2 text-sm px-2"> {{!add?'Add +':'Close X'}} </button> <div class="items-center grow ">Task Management System</div> 
         <button (click)="toggleAdd()" 
-        class="rounded-lg float-right m-2 text-lg px-2" 
+        class="rounded-lg font-normal float-right m-2 text-lg px-2" 
         [ngClass]="!add?'bg-green-500':'bg-red-500'" 
         routerLinkActive="selected"
         [routerLink]="!add?'/add':''" [routerLinkActiveOptions]="{exact:true}"
         > 
-            {{!add?'+':'X'}} 
+            {{!add?'Add +':'Close X'}} 
         </button> 
     </h2>
     <router-outlet></router-outlet>

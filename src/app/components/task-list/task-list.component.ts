@@ -19,6 +19,7 @@ export class TaskListComponent {
   tasks:Task[]=[];
   logs: string[] = [];
   order:boolean[] = [true, true, true, true,true];
+  
   fetchData(){
     const loading$ = this.store.select(getTaskLoading);
     const loaded$ = this.store.select(getTaskLoaded);
