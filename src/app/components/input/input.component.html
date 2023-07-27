@@ -1,0 +1,41 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)"  ngNativeValidate>
+    <ng-container ngModelGroup="formGroupValues">
+<div class="flex flex-col text-xs lg:text-base">
+    
+    <h2 class=" flex flex-row text-center bg-blue-500  text-white max-md:text-base text-2xl"> <div class="items-center grow ">Add Task</div>  </h2>
+    <input type="text"  required id="title" ngModel name="title" placeholder="Title" class="border rounded-lg drop-shadow-lg m-5 p-2 ">
+    <textarea  required name="description" ngModel #description placeholder="Description" class="border rounded-lg drop-shadow-lg m-5 p-2"></textarea>
+    
+    <div class="lg:flex lg:flex-row  lg:justify-between  w-full">
+        <div class="flex flex-row border mx-5 my-2 px-2 justify-between align-middle rounded-lg shadow-lg">
+            <label for="dueDt" class="p-1 align-middle m-2">Due Date : </label> 
+            <input required ngModel  type="date" name="dueDt" #dueDt id="dueDt" class="w-fit align-middle p-1 m-2">
+        </div>
+
+        <div class="flex flex-row border mx-5 my-2 px-2 justify-between rounded-lg shadow-lg">
+            <div class="p-4 ">Priority :</div>
+            <div class="flex items-center p-2">
+                <input   (change)="onRadioChange($event)" type="radio" name="priority" value="1" id="list-radio-high" class="peer hidden">
+                <label for="list-radio-high" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-red-600 font-bold peer-checked:text-white"> 
+                    
+                    High</label>
+            </div>
+            
+            <div class="flex items-center p-2">
+                <input  (change)="onRadioChange($event)" type="radio" name="priority" value="2" id="list-radio-medium" class="peer hidden">
+                <label for="list-radio-medium" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-yellow-600 font-bold peer-checked:text-white">Medium</label>
+            </div>
+            
+            <div class="flex items-center p-2">
+                <input  (change)="onRadioChange($event)" checked type="radio" value="3" name="priority" id="list-radio-low" class="peer hidden">
+                <label for="list-radio-low" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-green-600 font-bold peer-checked:text-white">Low</label>
+            </div>
+            
+        </div>
+    </div>
+    <button type="submit" 
+    class="border rounded-lg drop-shadow-lg m-5 p-2 bg-blue-600 text-white font-bold">Save</button>
+
+</div>
+</ng-container>
+</form>

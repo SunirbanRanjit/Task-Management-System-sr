@@ -1,0 +1,20 @@
+<div class="w-full py-1 flex flex-row">
+    <div (click)="exportToCSV()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export csv </div>
+    <div (click)="exportLog()" class="w-[20%] max-md:w-[30%] max-md:text-xs text-center bg-blue-400 rounded shadow-lg m-auto p-2"> Export log file </div>
+</div>
+<div class="flex h-[15%] flex-row max-md:text-xs w-full p-2  shadow text-center ">
+    <div (click)="sortSlNo()" class="w-[10%] m-1 p-1">Sl No.</div>
+    <div (click)="sortTitle()" class="w-[30%] m-1 p-1">Title</div>
+    <div (click)="sortPriority()" class="w-[20%] m-1 p-1">Priority</div>
+    <div (click)="sortStatus()"  class="w-[20%] m-1 p-1">Status</div>
+    <div (click)="sortDueDate()" class="w-[20%] m-1 p-1">Due Date</div>
+    <div class="w-[10%] m-1 p-1"> <img src="../../../assets/sort.png" class="w-[4vh] m-auto" alt="Sort" srcset=""> </div>
+</div>
+
+<ul *ngFor="let task of tasks">
+    <li>
+        <app-task-item [task]="task"></app-task-item>
+    </li>
+</ul>
+
+<div class="w-full fixed bottom-0 max-md:p-2 max-md:text-xs p-4 text-lg text-black bg-slate-400 text-center"> rsunirban@gmail.com </div>

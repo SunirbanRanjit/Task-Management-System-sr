@@ -1,0 +1,43 @@
+<div class=" max-md:px-1 max-md:mx-0 shadow-lg p-2 rounded-xl max-md:text-[10px] border-slate-500 border-2 " [ngClass]="visible? 'bg-slate-300':'bg-transparent'">
+    <div class="flex flex-row flex-wrap ">
+        <div class="m-1 p-1 text-center max-md:px-0 max-md:mx-0 w-[10%]" >{{task.Sl}}</div>
+        
+        <input type="text" [disabled]="!edit" [ngModel]="task.Title" (ngModelChange)="modelChangeTitle($event)" class="m-1 w-[20%] text-clip overflow-hidden max-md:w-[30%]  border rounded-lg shadow max-md:px-1 p-1"placeholder="Edit Title">
+        <div class="w-[20%] max-md:w-[8%] m-1 p-1" > <div *ngIf="!edit" class="w-4 h-4 m-auto  p-2 max-md:px-1  rounded-[50%]" [ngClass]="task.Priority==='1'?'bg-red-600':task.Priority==='2'?'bg-yellow-500':'bg-green-600'" ></div> </div> 
+        
+        <select [disabled]="!edit" [ngModel]="task.Progress" (ngModelChange)="modelChangeProgress($event)" id="status" class="w-[20%] max-md:w-[10%] text-clip overflow-hidden  bg-gray-50 border shadow  rounded-lg focus:ring-blue-500 focus:border-blue-500 block max-md:px-0 p-1 m-1 ">
+            <option value="1" >Pending</option>
+            <option value="2">In Progress</option>
+            <option value="3">Completed</option>
+        </select>
+        
+            <input [disabled]="!edit"  type="date"  [ngModel]="task.DueDt" (ngModelChange)="modelChangeDueDt($event)" class="p-1 max-md:px-1 rounded-md shadow text-clip overflow-hidden max-sm:w-1/5 w-[20%]">
+        
+        <div (click)="toggleCollapse()" class="rounded-lg  bg-blue-500 font-extrabold px-3 p-1 m-1"> ... </div>
+    </div>
+    <div *ngIf="visible"  class="w-full">
+        <label for="description" class="p-2 ">Description:</label>
+        <textarea  [disabled]="!edit" id="description" class="rounded-md w-full p-2 border-gray-500 shadow-lg" [ngModel]="task.Description" (ngModelChange)="modelChangeDescription($event)"></textarea>
+        <div class="flex text-white font-bold text-center flex-row items-end justify-between">
+            <div class="w-fit my-5 p-5 text-black flex flex-row" *ngIf="edit">
+                <div class="flex items-center p-2">
+                    <input (change)="onRadioChange($event)" type="radio" name="priority" value="1" id="list-radio-high" class="peer hidden">
+                    <label for="list-radio-high" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-red-600  peer-checked:text-white">High</label>
+                </div>
+                
+                <div class="flex items-center p-2">
+                    <input (change)="onRadioChange($event)" type="radio" name="priority" value="2" id="list-radio-medium" class="peer hidden">
+                    <label for="list-radio-medium" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-yellow-600  peer-checked:text-white">Medium</label>
+                </div>
+                
+                <div class="flex items-center p-2">
+                    <input (change)="onRadioChange($event)" type="radio" value="3" name="priority" id="list-radio-low" class="peer hidden">
+                    <label for="list-radio-low" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-green-600  peer-checked:text-white">Low</label>
+                </div>
+                <br>
+            </div>
+        <div class="m-auto my-5 p-5 w-1/5 bg-green-600 rounded-lg shadow" (click)="toggleEdit()"> {{!edit?'Edit':'Save'}} </div>
+        <div class="m-auto my-5 p-5 w-1/5 bg-red-600 rounded-lg shadow" (click)="deleteT()">Delete</div>
+    </div>
+    </div>
+</div>
